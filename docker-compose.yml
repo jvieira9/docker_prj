@@ -22,7 +22,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./volumes/src/php/html:/var/www/html
+      - ./volumes/src/php:/var/www/html
     depends_on:
       - db
 
@@ -33,22 +33,13 @@ services:
       - 9906:3306
     volumes:
       - ./volumes/db/mysql/cfg/my.cnf:/etc/my.cnf
-      - ./volumes/db/mysql/data/db:/data/db
+      - ./volumes/db/mysql/data:/var/lib/mysql
     environment:   
       MYSQL_ROOT_PASSWORD: xpto
       MYSQL_DATABASE: xpto #Create DB on startup
       MYSQL_USER: xpto #User for the DB above
       MYSQL_PASSWORD: xpto #PWORD for the user above
-   
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    ports:
-      - 8080:8080
-    environment:
-      - PMA_HOST=db
-    depends_on:
-      - db
+
   
   mongodb:
     image: mongo:5.0
@@ -65,3 +56,9 @@ services:
       - 6379:6379
     volumes:
       - ./volumes/db/redis:/data
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - 8080:8080

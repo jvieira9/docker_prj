@@ -1,11 +1,15 @@
 # docker_prj
-This is a docker project for a school assignement. This docker compose creates an environment with python, nodejs, php, mysql, mongodb and redis containers.
+
+This is a docker project for a school assignement. 
+This docker compose creates an environment with python, nodejs, php, adminer, mysql, mongodb and redis containers.
 
 Version 1.0 - This version has enough content to be delivered.
 
 Version 1.1 - This version is unfinished. The connection between mysql and php web page is being established.
 
-To do:
+
+
+<!-- To do:
 
 Dependencies
 
@@ -17,4 +21,4 @@ Redis - Nodejs Connection
 
 Nodejs basic webpage
 
-Databases - save only the databases
+Databases - save only the databases -->
