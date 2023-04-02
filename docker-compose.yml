@@ -17,7 +17,7 @@ services:
       - ./volumes/src/node:/home/node/app
   
   php:
-    build: .
+    build: ./images/php/.
     container_name: php
     ports:
       - 80:80
@@ -42,11 +42,11 @@ services:
    
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
     ports:
       - 8080:8080
     environment:
       - PMA_HOST=db
-      - PMA_ARBITRARY=1
     depends_on:
       - db
   
