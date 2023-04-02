@@ -1,0 +1,67 @@
+version: '3.9'
+
+services:
+
+  python:
+    image: python:3.9
+    tty: true
+    container_name: python
+    volumes:
+      - ./volumes/src/python:/usr/src/app  
+  
+  node:
+    image: node:8-slim
+    tty: true
+    container_name: node
+    volumes:
+      - ./volumes/src/node:/home/node/app
+  
+  php:
+    build: .
+    container_name: php
+    ports:
+      - 80:80
+    volumes:
+      - ./volumes/src/php/html:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - 9906:3306
+    volumes:
+      - ./volumes/db/mysql/cfg/my.cnf:/etc/my.cnf
+      - ./volumes/db/mysql/data/db:/data/db
+    environment:   
+      MYSQL_ROOT_PASSWORD: xpto
+      MYSQL_DATABASE: xpto #Create DB on startup
+      MYSQL_USER: xpto #User for the DB above
+      MYSQL_PASSWORD: xpto #PWORD for the user above
+   
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:8080
+    environment:
+      - PMA_HOST=db
+      - PMA_ARBITRARY=1
+    depends_on:
+      - db
+  
+  mongodb:
+    image: mongo:5.0
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./volumes/db/mongo:/data/db
+  
+  redis:
+    image: redis:6.2
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./volumes/db/redis:/data
