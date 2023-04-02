@@ -7,13 +7,13 @@ Version 1.0 - This version has enough content to be delivered.
 
 Version 1.1 - This version is unfinished. The connection between mysql and php web page is being established.
 
+Version 1.2 - Connection between mysql database and php web page established succesfully. The web page contains a form that sends the info to a database.
 
 
 <!-- To do:
 
 Dependencies
 
-MySQL - PHP Web Page with a form that will upload the data to a database.
 
 Mongo - Python connection
 

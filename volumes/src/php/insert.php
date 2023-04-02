@@ -2,12 +2,11 @@
 <html>
 
 <head>
-	<title>Insert Page</title>
+	<title>Insert</title>
 </head>
 
 <body>
 		<?php
-
 		// servername => localhost
 		// username => root
 		// password => empty
@@ -34,9 +33,9 @@
 
 		
 		if(mysqli_query($conn, $sql)){
-			echo "<h3>data stored in a database successfully."
-				. " Please browse your localhost php my admin"
-				. " to view the updated data</h3>";
+			echo "<h3>Dados guardados numa base de dados."
+				. " Aceda à sua base de dados "
+				. " para ver os dados atualizados.</h3>";
 
 			echo nl2br("\n$first_name\n $last_name\n "
 				. "$gender\n $address\n $email");
