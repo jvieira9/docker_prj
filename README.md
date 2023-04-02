@@ -14,7 +14,6 @@ Version 1.2 - Connection between mysql database and php web page established suc
 
 Dependencies
 
-
 Mongo - Python connection
 
 Redis - Nodejs Connection
