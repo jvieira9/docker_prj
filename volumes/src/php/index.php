@@ -1,19 +1,42 @@
-<?php
-// The MySQL service named in the docker-compose.yml.
-$host = 'mysql';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GFG- Store Data</title>
+</head>
+<body>
+		<h1>Storing Form data in Database</h1>
+		<form action="insert.php" method="post">
+			
+<p>
+			<label for="firstName">First Name:</label>
+			<input type="text" name="first_name" id="firstName">
+			</p>
 
-// Database use name
-$user = 'xpto';
+			
+<p>
+			<label for="lastName">Last Name:</label>
+			<input type="text" name="last_name" id="lastName">
+			</p>
 
-//database user password
-$pass = 'xpto';
+			
+<p>
+			<label for="Gender">Gender:</label>
+			<input type="text" name="gender" id="Gender">
+			</p>
 
-// check the MySQL connection status
-$conn = new mysqli($host, $user, $pass);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected to MySQL server successfully!";
-}
+			
+<p>
+			<label for="Address">Address:</label>
+			<input type="text" name="address" id="Address">
+			</p>
 
-?>
+			
+<p>
+			<label for="emailAddress">Email Address:</label>
+			<input type="text" name="email" id="emailAddress">
+			</p>
+
+			<input type="submit" value="Submit">
+		</form>
+</body>
+</html>
