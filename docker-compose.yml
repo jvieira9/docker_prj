@@ -36,9 +36,9 @@ services:
       - ./volumes/db/mysql/data:/var/lib/mysql
     environment:   
       MYSQL_ROOT_PASSWORD: xpto
-      MYSQL_DATABASE: xpto #Create DB on startup
-      MYSQL_USER: xpto #User for the DB above
-      MYSQL_PASSWORD: xpto #PWORD for the user above
+      MYSQL_DATABASE: xpto #Cria uma base de dados chamada xpto quando a máquina é iniciada
+      MYSQL_USER: xpto #Cria um utilizador para a base de dados acima
+      MYSQL_PASSWORD: xpto #Cria uma password para o utilizador acima
 
   
   mongodb:
