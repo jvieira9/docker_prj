@@ -32,7 +32,7 @@ services:
     ports:
       - 9906:3306
     volumes:
-      - ./volumes/db/mysql/xpto:/var/lib/mysql/xpto
+      - ./volumes/db/mysql:/var/lib/mysql
     environment:   
       MYSQL_ROOT_PASSWORD: xpto
       MYSQL_DATABASE: xpto #Cria uma base de dados chamada xpto quando a máquina é iniciada
@@ -40,7 +40,7 @@ services:
       MYSQL_PASSWORD: xpto #Cria uma password para o utilizador acima
 
   
-  mongodb:
+  mongo:
     image: mongo:5.0
     container_name: mongo
     ports:
