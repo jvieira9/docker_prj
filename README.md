@@ -10,6 +10,18 @@ Version 1.1 - This version is unfinished. The connection between mysql and php w
 Version 1.2 - Connection between mysql database and php web page established succesfully. The web page contains a form that sends the info to a database.
 
 
+CREATE TABLE messages (
+    id INT NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+SELECT * FROM messages;
+
 <!-- To do:
 
 Dependencies

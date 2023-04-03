@@ -32,7 +32,7 @@ services:
     ports:
       - 9906:3306
     volumes:
-      - ./volumes/db/mysql:/var/lib/mysql
+      - ./volumes/db/mysql/xpto:/var/lib/mysql/xpto
     environment:   
       MYSQL_ROOT_PASSWORD: xpto
       MYSQL_DATABASE: xpto #Cria uma base de dados chamada xpto quando a máquina é iniciada
