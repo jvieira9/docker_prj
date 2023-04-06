@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <body>
 	<?php
-	// database credentials
-	$servername = "db";
-	$username = "root";
-	$password = "xpto";
-	$dbname = "xpto";
+	// credentiais da base de dados
+	$servername = "db"; // nome do serviço
+	$username = "root"; // root
+	$password = "xpto"; // variavel de ambiente - root password
+	$dbname = "xpto"; // nome da base de dados criada
 
-	// create connection
+	// criar ligação
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-	// check connection
+	// verificar a conexão
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
-	// escape user inputs for security
+	// input na tabela
 	$first_name = mysqli_real_escape_string($conn, $_REQUEST['first_name']);
 	$last_name = mysqli_real_escape_string($conn, $_REQUEST['last_name']);
 	$gender = mysqli_real_escape_string($conn, $_REQUEST['gender']);
@@ -31,7 +31,7 @@
 		echo "ERRO: Não foi possível executar $sql. " . mysqli_error($conn);
 	}
 
-	// close connection
+	// fechar a ligação
 	mysqli_close($conn);
 	?>
 </body>
