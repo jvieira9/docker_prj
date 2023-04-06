@@ -26,13 +26,9 @@
 	$sql = "INSERT INTO messages (first_name, last_name, gender, address, email) 
 		VALUES ('$first_name', '$last_name', '$gender', '$address', '$email')";
 	if (mysqli_query($conn, $sql)) {
-		echo "<h3>Dados guardados numa base de dados."
-			. " Aceda à sua base de dados "
-			. " para ver os dados atualizados.</h3>";
-		echo nl2br("\n$first_name\n $last_name\n "
-			. "$gender\n $address\n $email");
+		echo "Dados guardados com sucesso.";
 	} else {
-		echo "ERROR: Could not execute $sql. " . mysqli_error($conn);
+		echo "ERRO: Não foi possível executar $sql. " . mysqli_error($conn);
 	}
 
 	// close connection
