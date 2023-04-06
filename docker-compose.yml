@@ -9,7 +9,7 @@ services:
     volumes:
       - ./volumes/src/python:/app
     ports:
-      - 5000:5000 #Default port for flask apps
+      - 5000:5000
     depends_on:
       - redis
   
@@ -27,7 +27,9 @@ services:
     container_name: node
     volumes:
       - ./volumes/src/node:/home/node/app
-  
+    depends_on:
+      - mongo
+
   mongo:
     image: mongo:5.0
     container_name: mongo
@@ -56,8 +58,11 @@ services:
     environment:   
       MYSQL_ROOT_PASSWORD: xpto
       MYSQL_DATABASE: xpto
+
   adminer:
     image: adminer
     container_name: adminer
     ports:
       - 8080:8080
+    depends_on:
+      - db

@@ -1,12 +1,8 @@
 # docker_prj
 
 This is a docker project for a school assignement. 
-This docker compose creates an environment with python, nodejs, php, adminer, mysql, mongodb and redis containers.
 
-Version 1.2 - Connection between mysql database and php web page established succesfully. The web page contains a form that sends the info to a database.
-
-
-CREATE TABLE messages (
+CREATE TABLE dados (
     id INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -16,16 +12,4 @@ CREATE TABLE messages (
     PRIMARY KEY (id)
 );
 
-SELECT * FROM messages;
-
-<!-- To do:
-
-Dependencies
-
-Mongo - Python connection
-
-Redis - Nodejs Connection
-
-Nodejs basic webpage
-
-Databases - save only the databases
+SELECT * FROM dados;

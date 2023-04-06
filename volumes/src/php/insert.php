@@ -23,7 +23,7 @@
 	$email = mysqli_real_escape_string($conn, $_REQUEST['email']);
 
 	// attempt insert query execution
-	$sql = "INSERT INTO messages (first_name, last_name, gender, address, email) 
+	$sql = "INSERT INTO dados (first_name, last_name, gender, address, email) 
 		VALUES ('$first_name', '$last_name', '$gender', '$address', '$email')";
 	if (mysqli_query($conn, $sql)) {
 		echo "Dados guardados com sucesso.";
