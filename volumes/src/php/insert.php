@@ -1,52 +1,43 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-	<title>Insert</title>
-</head>
-
 <body>
-		<?php
-		// servername => localhost
-		// username => root
-		// password => empty
-		// database name => staff
-		$conn = mysqli_connect("db", "root", "xpto", "xpto");
-		
-		// Check connection
-		if($conn === false){
-			die("ERROR: Could not connect. "
-				. mysqli_connect_error());
-		}
-		
-		// Taking all 5 values from the form data(input)
-		$first_name = $_REQUEST['first_name'];
-		$last_name = $_REQUEST['last_name'];
-		$gender = $_REQUEST['gender'];
-		$address = $_REQUEST['address'];
-		$email = $_REQUEST['email'];
-		
-		// Performing insert query execution
-		// here our table name is college
-		$sql = "INSERT INTO messages (first_name, last_name, gender, address, email) VALUES ('$first_name',
-        '$last_name','$gender','$address','$email')";
+	<?php
+	// database credentials
+	$servername = "db";
+	$username = "root";
+	$password = "xpto";
+	$dbname = "xpto";
 
-		
-		if(mysqli_query($conn, $sql)){
-			echo "<h3>Dados guardados numa base de dados."
-				. " Aceda à sua base de dados "
-				. " para ver os dados atualizados.</h3>";
+	// create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-			echo nl2br("\n$first_name\n $last_name\n "
-				. "$gender\n $address\n $email");
-		} else{
-			echo "ERROR: Hush! Sorry $sql. "
-				. mysqli_error($conn);
-		}
-		
-		// Close connection
-		mysqli_close($conn);
-		?>
+	// check connection
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+	// escape user inputs for security
+	$first_name = mysqli_real_escape_string($conn, $_REQUEST['first_name']);
+	$last_name = mysqli_real_escape_string($conn, $_REQUEST['last_name']);
+	$gender = mysqli_real_escape_string($conn, $_REQUEST['gender']);
+	$address = mysqli_real_escape_string($conn, $_REQUEST['address']);
+	$email = mysqli_real_escape_string($conn, $_REQUEST['email']);
+
+	// attempt insert query execution
+	$sql = "INSERT INTO messages (first_name, last_name, gender, address, email) 
+		VALUES ('$first_name', '$last_name', '$gender', '$address', '$email')";
+	if (mysqli_query($conn, $sql)) {
+		echo "<h3>Dados guardados numa base de dados."
+			. " Aceda à sua base de dados "
+			. " para ver os dados atualizados.</h3>";
+		echo nl2br("\n$first_name\n $last_name\n "
+			. "$gender\n $address\n $email");
+	} else {
+		echo "ERROR: Could not execute $sql. " . mysqli_error($conn);
+	}
+
+	// close connection
+	mysqli_close($conn);
+	?>
 </body>
 
 </html>
