@@ -6,20 +6,56 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Formulário</title>
 	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			font-size: 36px;
+			text-transform: uppercase;
+			letter-spacing: 3px;
+		}
+
+		form {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+		}
+
 		label {
 			display: block;
 			margin-bottom: 10px;
+			font-size: 16px;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 1px;
 		}
+
 		input[type="text"],
 		input[type="email"] {
-			padding: 5px;
-			border: 1px solid #ccc;
-			border-radius: 3px;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
 			font-size: 16px;
-			width: 50%;
+			width: 100%;
 			box-sizing: border-box;
 			margin-bottom: 20px;
+			background-color: #f5f5f5;
+			color: #444;
 		}
+
+		input[type="text"]:focus,
+		input[type="email"]:focus {
+			outline: none;
+			box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+			border: 1px solid #ccc;
+		}
+
 		input[type="submit"] {
 			background-color: #4CAF50;
 			color: white;
@@ -27,6 +63,14 @@
 			border: none;
 			border-radius: 3px;
 			cursor: pointer;
+			font-size: 16px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			transition: all 0.3s ease;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
 		}
 	</style>
 </head>
