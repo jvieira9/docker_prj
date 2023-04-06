@@ -3,11 +3,23 @@ version: '3.9'
 services:
 
   python:
-    image: python:3.9
-    tty: true
+    build: ./images/python/.
+    command: python3 app.py
     container_name: python
     volumes:
-      - ./volumes/src/python:/usr/src/app  
+      - ./volumes/src/python:/app
+    ports:
+      - 5000:5000 #Default port for flask apps
+    depends_on:
+      - redis
+  
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./volumes/db/redis:/data
   
   node:
     image: node:8-slim
@@ -15,6 +27,14 @@ services:
     container_name: node
     volumes:
       - ./volumes/src/node:/home/node/app
+  
+  mongo:
+    image: mongo:5.0
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./volumes/db/mongo:/data/db
   
   php:
     build: ./images/php/.
@@ -35,27 +55,7 @@ services:
       - ./volumes/db/mysql:/var/lib/mysql
     environment:   
       MYSQL_ROOT_PASSWORD: xpto
-      MYSQL_DATABASE: xpto #Cria uma base de dados chamada xpto quando a máquina é iniciada
-      MYSQL_USER: xpto #Cria um utilizador para a base de dados acima
-      MYSQL_PASSWORD: xpto #Cria uma password para o utilizador acima
-
-  
-  mongo:
-    image: mongo:5.0
-    container_name: mongo
-    ports:
-      - 27017:27017
-    volumes:
-      - ./volumes/db/mongo:/data/db
-  
-  redis:
-    image: redis:6.2
-    container_name: redis
-    ports:
-      - 6379:6379
-    volumes:
-      - ./volumes/db/redis:/data
-
+      MYSQL_DATABASE: xpto
   adminer:
     image: adminer
     container_name: adminer
