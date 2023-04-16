@@ -4,7 +4,6 @@ services:
 
   python:
     build: ./images/python/.
-    command: python3 app.py
     container_name: python
     volumes:
       - ./volumes/src/python:/app
@@ -12,7 +11,8 @@ services:
       - 5000:5000
     depends_on:
       - redis
-  
+    command: python3 app.py
+
   redis:
     image: redis:alpine
     container_name: redis
@@ -23,12 +23,12 @@ services:
   
   node:
     image: node:8-slim
-    tty: true
     container_name: node
     volumes:
-      - ./volumes/src/node:/home/node/app
+      - ./volumes/src/node:/app
     depends_on:
       - mongo
+    command: node /app/app.js
 
   mongo:
     image: mongo:5.0
@@ -52,7 +52,7 @@ services:
     image: mysql:8.0
     container_name: mysql
     ports:
-      - 9906:3306
+      - 3306:3306
     volumes:
       - ./volumes/db/mysql:/var/lib/mysql
     environment:   

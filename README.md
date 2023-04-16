@@ -1,7 +1,5 @@
 # docker_prj
 
-This is a docker project for a school assignement. 
-
 CREATE TABLE dados (
     id INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
